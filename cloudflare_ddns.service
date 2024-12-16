@@ -1,0 +1,11 @@
+[Unit]
+Description=CLOUDFLARE DDNS SERVICE
+After=network.target
+
+[Service]
+User=root
+ExecStart=/usr/bin/python3 /opt/cloudflare_ddns/cloudflare_ddns.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
