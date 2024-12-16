@@ -5,10 +5,10 @@ Implement a Dynamic Domain Name System Using Cloudflare's Api, Works for only Ip
   clone the repo
 
    ```bash
-    git clone https://github.com/Mesh-Sys/cloudflare_ddns.git
-    cd cloudflare_ddns
-    pip install requests
-    sudo ./install.sh
+   git clone https://github.com/Mesh-Sys/cloudflare_ddns.git
+   cd cloudflare_ddns
+   pip install requests
+   sudo ./install.sh
    ```
 
 # UNINSTALL
