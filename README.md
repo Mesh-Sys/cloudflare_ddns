@@ -1,5 +1,5 @@
 # CLOUDFLARE DDNS
-Implement a Dynamic Domain Name System Using Cloudflare's Api, Works for only Ipv4 Addresses For Now
+Implement a Dynamic Domain Name System (DDNS) Using the Cloudflare Api, Works for only Ipv4 Addresses For Now
 
 # INSTALL
   clone the repo
