@@ -80,25 +80,29 @@ def update_record(record, content, url, headers):
 	else:
 		log(f"update_record\nERROR {update_response.status_code}\n{json.dumps(update_response.json(), indent=4)}")
 
-load_config(CONFIG_DIRECTORY)
+def main():
+	load_config(CONFIG_DIRECTORY)
 
-headers = {
-	"Content-Type": "application/json",
-	"X-Auth-Email": AUTH_EMAIL,
-	"X-Auth-Key": API_KEY
-}
-
-time_delay = TIME * 60
-
-while True:
-	if ZONE_ID == "ENVIRON" and AUTH_EMAIL == "ENVIRON"  and API_KEY == "ENVIRON"  and DOMAIN == "ENVIRON":
-		log("INVALID CONFIGURATION, UPDATE CONFIG FILE OR ADD ENVIROMENT VARIABLES")
-		continue
-	current_ip = fetch_public_ip()
+	headers = {
+		"Content-Type": "application/json",
+		"X-Auth-Email": AUTH_EMAIL,
+		"X-Auth-Key": API_KEY
+	}
 	
-	current_record = fetch_record(DOMAIN, URL, headers)
+	time_delay = TIME * 60
 	
-	if current_record["content"] != current_ip:
-		update_record(current_record, current_ip, URL, headers)
+	while True:
+		if ZONE_ID == "ENVIRON" and AUTH_EMAIL == "ENVIRON"  and API_KEY == "ENVIRON"  and DOMAIN == "ENVIRON":
+			log("INVALID CONFIGURATION, UPDATE CONFIG FILE OR ADD ENVIROMENT VARIABLES")
+			continue
+		current_ip = fetch_public_ip()
+		
+		current_record = fetch_record(DOMAIN, URL, headers)
+		
+		if current_record["content"] != current_ip:
+			update_record(current_record, current_ip, URL, headers)
+	
+		time.sleep(float(time_delay))
 
-	time.sleep(float(time_delay))
+if __name__ == "__main__":
+	main()
